@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.arsenic_flutter_ecommerce">
+    package="com.waqar.arsenic_flutter_ecommerce">
    <application
         android:label="arsenic_flutter_ecommerce"
         android:icon="@mipmap/ic_launcher">
