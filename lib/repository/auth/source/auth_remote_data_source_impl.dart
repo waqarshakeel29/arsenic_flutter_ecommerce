@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../../domain/auth/auth_response.dart';
 import '../../../shared/error/server_error.dart';
-import 'login_remote_data_source.dart';
+import 'auth_remote_data_source.dart';
 
 class LoginRemoteDataSourceImpl extends LoginRemoteDataSource {
   // final http.Client client;

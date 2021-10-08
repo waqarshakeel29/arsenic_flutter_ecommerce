@@ -1,13 +1,13 @@
-import 'package:arsenic_flutter_ecommerce/repository/auth/source/login_remote_data_source_impl.dart';
+import 'package:arsenic_flutter_ecommerce/repository/auth/source/auth_remote_data_source_impl.dart';
 import 'package:arsenic_flutter_ecommerce/shared/error/auth/signup_error.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../domain/auth/app_user.dart';
 import '../../domain/auth/auth_response.dart';
-import 'source/login_remote_data_source.dart';
+import 'source/auth_remote_data_source.dart';
 import '../../shared/error/auth/login_error.dart';
 
-import 'login_repository.dart';
+import 'auth_repository.dart';
 
 class LoginRepositoryImpl extends LoginRepository {
   final LoginRemoteDataSource loginRemoteDataSource;

@@ -1,8 +1,8 @@
 import 'package:arsenic_flutter_ecommerce/controller/auth/login_bloc.dart';
-import 'package:arsenic_flutter_ecommerce/repository/auth/login_repository.dart';
-import 'package:arsenic_flutter_ecommerce/repository/auth/login_repository_impl.dart';
-import 'package:arsenic_flutter_ecommerce/repository/auth/source/login_remote_data_source.dart';
-import 'package:arsenic_flutter_ecommerce/repository/auth/source/login_remote_data_source_impl.dart';
+import 'package:arsenic_flutter_ecommerce/repository/auth/auth_repository.dart';
+import 'package:arsenic_flutter_ecommerce/repository/auth/auth_repository_impl.dart';
+import 'package:arsenic_flutter_ecommerce/repository/auth/source/auth_remote_data_source.dart';
+import 'package:arsenic_flutter_ecommerce/repository/auth/source/auth_remote_data_source_impl.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get_it/get_it.dart';

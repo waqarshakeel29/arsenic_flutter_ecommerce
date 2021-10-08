@@ -1,7 +1,7 @@
 import 'package:arsenic_flutter_ecommerce/controller/auth/login_event.dart';
 import 'package:arsenic_flutter_ecommerce/controller/auth/login_state.dart';
 import 'package:arsenic_flutter_ecommerce/domain/auth/app_user.dart';
-import 'package:arsenic_flutter_ecommerce/repository/auth/login_repository.dart';
+import 'package:arsenic_flutter_ecommerce/repository/auth/auth_repository.dart';
 import 'package:arsenic_flutter_ecommerce/shared/error/auth/login_error.dart';
 import 'package:arsenic_flutter_ecommerce/shared/error/auth/signup_error.dart';
 import 'package:dartz/dartz.dart';
