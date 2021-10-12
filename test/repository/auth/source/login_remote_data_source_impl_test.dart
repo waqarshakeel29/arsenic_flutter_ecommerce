@@ -1,7 +1,6 @@
 import 'package:arsenic_flutter_ecommerce/domain/auth/app_user.dart';
 import 'package:arsenic_flutter_ecommerce/domain/auth/auth_response.dart';
 import 'package:arsenic_flutter_ecommerce/repository/auth/source/auth_remote_data_source_impl.dart';
-import 'package:arsenic_flutter_ecommerce/shared/error/server_error.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
