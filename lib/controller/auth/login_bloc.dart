@@ -28,7 +28,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           await loginRepository.signUpWithUserNamePassword(
               event.name, event.userName, event.password);
       print(response.toString());
-      yield response.fold((failure) => ErrorState(message: "Unable Sign Up"),
+      yield response.fold(
+        (failure) => ErrorState(message: "Unable Sign Up"),
           (appUser) => LoadedState(appUser));
     }
   }
