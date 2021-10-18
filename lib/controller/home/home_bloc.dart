@@ -18,6 +18,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       yield LoadingState();
       Either<ItemsFetchError, List<StoreItem>> response =
           await homeRepository.getHomeProducts(event.uid);
+      print("Response from bloc");
+      print(response);
       yield response.fold((failure) => ErrorState(message: "Unable Sign Up"),
           (listStoreItems) => LoadedState(listStoreItems));
     }

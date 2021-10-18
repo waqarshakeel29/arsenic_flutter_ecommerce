@@ -3,6 +3,7 @@ import 'package:arsenic_flutter_ecommerce/shared/constants.dart';
 import 'package:arsenic_flutter_ecommerce/controller/auth/login_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'controller/home/bloc.dart';
 import 'injection_container.dart' as di;
 import 'injection_container.dart';
 
@@ -10,7 +11,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await di.init();
 
-  runApp(BlocProvider(create: (context) => sl<LoginBloc>(), child: MyApp()));
+  // runApp(BlocProvider(create: (context) => sl<LoginBloc>(), child: MyApp()));
+  runApp(MultiBlocProvider(child: MyApp(), providers: [
+    BlocProvider(create: (context) => sl<LoginBloc>()),
+    BlocProvider(create: (context) => sl<HomeBloc>())
+  ]));
 }
 
 class MyApp extends StatelessWidget {

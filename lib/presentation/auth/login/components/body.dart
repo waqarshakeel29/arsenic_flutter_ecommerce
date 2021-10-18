@@ -2,6 +2,7 @@ import 'package:arsenic_flutter_ecommerce/controller/auth/login_bloc.dart';
 import 'package:arsenic_flutter_ecommerce/controller/auth/login_event.dart';
 import 'package:arsenic_flutter_ecommerce/controller/auth/login_state.dart';
 import 'package:arsenic_flutter_ecommerce/presentation/auth/signup/signup_screen.dart';
+import 'package:arsenic_flutter_ecommerce/presentation/home/home_screen/home_screen.dart';
 import 'package:arsenic_flutter_ecommerce/shared/components/already_have_an_account_acheck.dart';
 import 'package:arsenic_flutter_ecommerce/shared/components/rounded_button.dart';
 import 'package:arsenic_flutter_ecommerce/shared/components/rounded_input_field.dart';
@@ -12,7 +13,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../injection_container.dart';
-import '../../../../main.dart';
 import 'background.dart';
 
 class Body extends StatelessWidget {
@@ -31,7 +31,9 @@ class Body extends StatelessWidget {
       listener: (BuildContext context, state) {
         if (state is LoadedState) {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => TestScreen()));
+              context,
+              MaterialPageRoute(
+                  builder: (context) => HomeScreen(uid: state.appUser.uid)));
         }
       },
       child: BlocBuilder<LoginBloc, LoginState>(

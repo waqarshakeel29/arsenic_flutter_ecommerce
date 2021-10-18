@@ -15,7 +15,6 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../injection_container.dart';
 import '../../../../main.dart';
 import 'background.dart';
-import 'or_divider.dart';
 
 class Body extends StatelessWidget {
   final TextEditingController nameController = TextEditingController();
@@ -90,7 +89,7 @@ class Body extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return const LoginScreen();
+                              return LoginScreen();
                             },
                           ),
                         );
