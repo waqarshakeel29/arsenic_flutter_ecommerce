@@ -14,7 +14,31 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
 
   @override
   Future<Either<ServerError, HomeResponse>> getHomeProducts(String uid) async {
-    // await Future.delayed(Duration(seconds: 5));
+    // await Future.delayed(Duration(seconds: 1));
+    List<StoreItem> storeItems = [];
+    for (int i = 0; i < 10; i++) {
+      storeItems.add(StoreItem(
+          itemId: i.toString(), itemName: "Nike Bounce Shoes", itemPrice: 200));
+    }
+    return Right(HomeResponse(storeItems: storeItems));
+  }
+
+  @override
+  Future<Either<ServerError, HomeResponse>> getSelectedFilteredHomeProducts(
+      String filterString) async {
+    // await Future.delayed(Duration(seconds: 1));
+    List<StoreItem> storeItems = [];
+    for (int i = 0; i < 10; i++) {
+      storeItems.add(StoreItem(
+          itemId: i.toString(), itemName: "Nike Bounce Shoes", itemPrice: 200));
+    }
+    return Right(HomeResponse(storeItems: storeItems));
+  }
+
+  @override
+  Future<Either<ServerError, HomeResponse>> getCatagoriesFilteredHomeProducts(
+      List<String> filterList) async {
+    // await Future.delayed(Duration(seconds: 1));
     List<StoreItem> storeItems = [];
     for (int i = 0; i < 10; i++) {
       storeItems.add(StoreItem(

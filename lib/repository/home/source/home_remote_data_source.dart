@@ -4,4 +4,8 @@ import 'package:dartz/dartz.dart';
 
 abstract class HomeRemoteDataSource {
   Future<Either<ServerError, HomeResponse>> getHomeProducts(String uid);
+  Future<Either<ServerError, HomeResponse>> getSelectedFilteredHomeProducts(
+      String filterString);
+  Future<Either<ServerError, HomeResponse>> getCatagoriesFilteredHomeProducts(
+      List<String> listString);
 }

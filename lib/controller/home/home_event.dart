@@ -15,3 +15,21 @@ class FetchItemsEvent extends HomeEvent {
   @override
   List<Object> get props => [uid];
 }
+
+class FilterEvent extends HomeEvent {
+  final String filterString;
+
+  FilterEvent(this.filterString);
+
+  @override
+  List<Object> get props => [filterString];
+}
+
+class FilterCatagoriesEvent extends HomeEvent {
+  final List<String> filterList;
+
+  FilterCatagoriesEvent(this.filterList);
+
+  @override
+  List<Object> get props => [filterList];
+}

@@ -22,6 +22,11 @@ class LoadedState extends HomeState {
   List<Object> get props => [listStoreItems];
 }
 
+class LoadedCatatoryState extends HomeState {
+  @override
+  List<Object> get props => [];
+}
+
 class ErrorState extends HomeState {
   final String message;
 

@@ -22,6 +22,24 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       print(response);
       yield response.fold((failure) => ErrorState(message: "Unable Sign Up"),
           (listStoreItems) => LoadedState(listStoreItems));
+    } else if (event is FilterEvent) {
+      yield LoadingState();
+
+      if (event.filterString == "Catagories") {
+        yield LoadedCatatoryState();
+      } else {
+        Either<ItemsFetchError, List<StoreItem>> response = await homeRepository
+            .getSelectedFilteredHomeProducts(event.filterString);
+        print("Response from bloc");
+        yield response.fold((failure) => ErrorState(message: "Unable Sign Up"),
+            (listStoreItems) => LoadedState(listStoreItems));
+      }
+    } else if (event is FilterCatagoriesEvent) {
+      yield LoadingState();
+      Either<ItemsFetchError, List<StoreItem>> response = await homeRepository
+          .getCatagoriesFilteredHomeProducts(event.filterList);
+      yield response.fold((failure) => ErrorState(message: "Unable Sign Up"),
+          (listStoreItems) => LoadedState(listStoreItems));
     }
   }
 }

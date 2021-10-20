@@ -19,4 +19,24 @@ class HomeRepositoryImpl extends HomeRepository {
         (serverError) => Left(ItemsFetchError("Unable to get List")),
         (homeResponse) => Right(homeResponse.storeItems));
   }
+
+  @override
+  Future<Either<ItemsFetchError, List<StoreItem>>>
+      getSelectedFilteredHomeProducts(String filterString) async {
+    final result = await homeRemoteDataSource
+        .getSelectedFilteredHomeProducts(filterString);
+    return result.fold(
+        (serverError) => Left(ItemsFetchError("Unable to get List")),
+        (homeResponse) => Right(homeResponse.storeItems));
+  }
+
+  @override
+  Future<Either<ItemsFetchError, List<StoreItem>>>
+      getCatagoriesFilteredHomeProducts(List<String> filterList) async {
+    final result = await homeRemoteDataSource
+        .getCatagoriesFilteredHomeProducts(filterList);
+    return result.fold(
+        (serverError) => Left(ItemsFetchError("Unable to get List")),
+        (homeResponse) => Right(homeResponse.storeItems));
+  }
 }
