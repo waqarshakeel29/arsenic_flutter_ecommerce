@@ -62,19 +62,46 @@ class Body extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Container(
-                          height: 50,
-                          child: ListView(
-                            scrollDirection: Axis.horizontal,
-                            children: List<String>.generate(
-                                    100, (i) => (i + 1).toString())
-                                .map((String string) {
-                              return Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(string),
-                              );
-                            }).toList(),
-                          )),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10, bottom: 10),
+                        child: Container(
+                            height: 45,
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              children: [
+                                "All",
+                                "Catagories",
+                                "Top",
+                                "Recommendations"
+                              ].map((String string) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(right: 10),
+                                  child: GestureDetector(
+                                    onTap: () {},
+                                    child: Container(
+                                        constraints:
+                                            BoxConstraints(minWidth: 70),
+                                        decoration: BoxDecoration(
+                                          color: Colors.grey,
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                        ),
+                                        child: Center(
+                                            child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 20, right: 20),
+                                          child: Text(
+                                            string,
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 17),
+                                          ),
+                                        ))),
+                                  ),
+                                );
+                              }).toList(),
+                            )),
+                      ),
                       Expanded(
                           child: ListView(
                         children: List<String>.generate(

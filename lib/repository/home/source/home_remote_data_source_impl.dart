@@ -14,7 +14,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
 
   @override
   Future<Either<ServerError, HomeResponse>> getHomeProducts(String uid) async {
-    await Future.delayed(Duration(seconds: 5));
+    // await Future.delayed(Duration(seconds: 5));
     List<StoreItem> storeItems = [];
     for (int i = 0; i < 10; i++) {
       storeItems.add(StoreItem(
