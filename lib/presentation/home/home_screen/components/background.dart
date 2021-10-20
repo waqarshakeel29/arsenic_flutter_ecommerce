@@ -1,3 +1,4 @@
+import 'package:arsenic_flutter_ecommerce/shared/constants.dart';
 import 'package:flutter/material.dart';
 
 class Background extends StatelessWidget {

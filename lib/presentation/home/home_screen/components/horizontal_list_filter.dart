@@ -1,4 +1,5 @@
 import 'package:arsenic_flutter_ecommerce/controller/home/bloc.dart';
+import 'package:arsenic_flutter_ecommerce/shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/src/provider.dart';
 
@@ -41,7 +42,9 @@ class _HorizontalListFilterState extends State<HorizontalListFilter> {
               child: Container(
                   constraints: BoxConstraints(minWidth: 70),
                   decoration: BoxDecoration(
-                    color: selectedIndex == index ? Colors.red : Colors.grey,
+                    color: selectedIndex == index
+                        ? kPrimaryColor
+                        : kPrimaryLightColor,
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                   ),
                   child: Center(

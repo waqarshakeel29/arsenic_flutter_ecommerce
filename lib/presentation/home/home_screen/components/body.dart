@@ -2,6 +2,7 @@ import 'package:arsenic_flutter_ecommerce/controller/home/bloc.dart';
 import 'package:arsenic_flutter_ecommerce/main.dart';
 import 'package:arsenic_flutter_ecommerce/presentation/home/home_screen/components/catagories_list_view.dart';
 import 'package:arsenic_flutter_ecommerce/presentation/home/home_screen/components/horizontal_list_filter.dart';
+import 'package:arsenic_flutter_ecommerce/shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -74,7 +75,7 @@ class _BodyState extends State<Body> {
             bloc: sl<HomeBloc>(),
             builder: (buildContext, state) {
               return Padding(
-                  padding: const EdgeInsets.only(top: 130, left: 20, right: 20),
+                  padding: const EdgeInsets.only(top: 130, left: 15, right: 15),
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -108,16 +109,82 @@ class _BodyState extends State<Body> {
                               return MediaQuery.removePadding(
                                 context: context,
                                 removeTop: true,
-                                child: ListView(
-                                  children: List<String>.generate(
-                                          100, (i) => (i + 1).toString())
-                                      .map((String string) {
-                                    return Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(string),
-                                    );
-                                  }).toList(),
-                                ),
+                                child: ListView.builder(
+                                    itemCount: state.listStoreItems.length,
+                                    itemBuilder: (_, index) {
+                                      return Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Container(
+                                          height: 120,
+                                          width: size.width,
+                                          decoration: BoxDecoration(
+                                              color: kPrimaryLightColor,
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20))),
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                  child: Image(
+                                                      height: 100,
+                                                      width: 100,
+                                                      fit: BoxFit.fill,
+                                                      image: NetworkImage(
+                                                          "https://i.insider.com/5e38419b5bc79c4c7d4e1192?width=906&format=jpeg")),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Text(
+                                                      state
+                                                          .listStoreItems[index]
+                                                          .itemName,
+                                                      style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 18),
+                                                    ),
+                                                    Text(
+                                                      state
+                                                          .listStoreItems[index]
+                                                          .itemName,
+                                                      style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 16),
+                                                    ),
+                                                    Text(
+                                                      "AED " +
+                                                          state
+                                                              .listStoreItems[
+                                                                  index]
+                                                              .itemPrice
+                                                              .toString(),
+                                                      style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 20),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    }),
                               );
                             } else if (state is LoadedCatatoryState) {
                               return Column(
