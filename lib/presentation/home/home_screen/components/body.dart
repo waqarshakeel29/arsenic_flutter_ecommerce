@@ -22,6 +22,8 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  bool isGrid = false;
+
   final TextEditingController emailController = TextEditingController();
 
   final TextEditingController passwordController = TextEditingController();
@@ -87,9 +89,26 @@ class _BodyState extends State<Body> {
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 30),
                             ),
-                            const Text(
-                              "Sort By",
-                              style: TextStyle(fontSize: 15),
+                            Row(
+                              children: [
+                                const Text(
+                                  "Sort By",
+                                  style: TextStyle(fontSize: 15),
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      isGrid = !isGrid;
+                                    });
+                                  },
+                                  child: Icon(isGrid
+                                      ? Icons.grid_view_outlined
+                                      : Icons.view_list_outlined),
+                                )
+                              ],
                             ),
                           ],
                         ),
@@ -109,82 +128,166 @@ class _BodyState extends State<Body> {
                               return MediaQuery.removePadding(
                                 context: context,
                                 removeTop: true,
-                                child: ListView.builder(
-                                    itemCount: state.listStoreItems.length,
-                                    itemBuilder: (_, index) {
-                                      return Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Container(
-                                          height: 120,
-                                          width: size.width,
-                                          decoration: BoxDecoration(
-                                              color: kPrimaryLightColor,
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(20))),
-                                          child: Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: ClipRRect(
+                                child: isGrid
+                                    ? ListView.builder(
+                                        itemCount: state.listStoreItems.length,
+                                        itemBuilder: (_, index) {
+                                          return Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Container(
+                                              height: 120,
+                                              width: size.width,
+                                              decoration: BoxDecoration(
+                                                  color: kPrimaryLightColor,
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                  child: Image(
-                                                      height: 100,
-                                                      width: 100,
-                                                      fit: BoxFit.fill,
-                                                      image: NetworkImage(
-                                                          "https://i.insider.com/5e38419b5bc79c4c7d4e1192?width=906&format=jpeg")),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceEvenly,
-                                                  children: [
-                                                    Text(
-                                                      state
-                                                          .listStoreItems[index]
-                                                          .itemName,
-                                                      style: TextStyle(
-                                                          color: Colors.black,
-                                                          fontSize: 18),
+                                                      BorderRadius.all(
+                                                          Radius.circular(20))),
+                                              child: Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                      child: Image(
+                                                          height: 100,
+                                                          width: 100,
+                                                          fit: BoxFit.fill,
+                                                          image: NetworkImage(
+                                                              "https://i.insider.com/5e38419b5bc79c4c7d4e1192?width=906&format=jpeg")),
                                                     ),
-                                                    Text(
-                                                      state
-                                                          .listStoreItems[index]
-                                                          .itemName,
-                                                      style: TextStyle(
-                                                          color: Colors.black,
-                                                          fontSize: 16),
-                                                    ),
-                                                    Text(
-                                                      "AED " +
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceEvenly,
+                                                      children: [
+                                                        Text(
                                                           state
                                                               .listStoreItems[
                                                                   index]
-                                                              .itemPrice
-                                                              .toString(),
-                                                      style: TextStyle(
-                                                          color: Colors.black,
-                                                          fontSize: 20),
-                                                    )
-                                                  ],
-                                                ),
+                                                              .itemName,
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.black,
+                                                              fontSize: 18),
+                                                        ),
+                                                        Text(
+                                                          state
+                                                              .listStoreItems[
+                                                                  index]
+                                                              .itemName,
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.black,
+                                                              fontSize: 16),
+                                                        ),
+                                                        Text(
+                                                          "AED " +
+                                                              state
+                                                                  .listStoreItems[
+                                                                      index]
+                                                                  .itemPrice
+                                                                  .toString(),
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.black,
+                                                              fontSize: 20),
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
-                                            ],
+                                            ),
+                                          );
+                                        })
+                                    : GridView.builder(
+                                        gridDelegate:
+                                            SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 2,
+                                          childAspectRatio:
+                                              (size.height / size.width) * 0.4,
+                                          mainAxisSpacing: 4.0,
+                                          crossAxisSpacing: 4.0,
+                                        ),
+                                        itemCount: state.listStoreItems.length,
+                                        itemBuilder: (_, index) => Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Container(
+                                            width: size.width,
+                                            decoration: BoxDecoration(
+                                                color: kPrimaryLightColor,
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20))),
+                                            child: Column(
+                                              children: [
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                    child: Image(
+                                                        height: 100,
+                                                        width: 100,
+                                                        fit: BoxFit.fill,
+                                                        image: NetworkImage(
+                                                            "https://i.insider.com/5e38419b5bc79c4c7d4e1192?width=906&format=jpeg")),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceEvenly,
+                                                    children: [
+                                                      Text(
+                                                        state
+                                                            .listStoreItems[
+                                                                index]
+                                                            .itemName,
+                                                        style: TextStyle(
+                                                            color: Colors.black,
+                                                            fontSize: 16),
+                                                      ),
+                                                      Text(
+                                                        "AED " +
+                                                            state
+                                                                .listStoreItems[
+                                                                    index]
+                                                                .itemPrice
+                                                                .toString(),
+                                                        style: TextStyle(
+                                                            color: Colors.black,
+                                                            fontSize: 17),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ),
-                                      );
-                                    }),
+                                      ),
                               );
                             } else if (state is LoadedCatatoryState) {
                               return Column(
