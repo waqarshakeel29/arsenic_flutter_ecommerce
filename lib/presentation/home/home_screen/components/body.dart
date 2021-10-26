@@ -1,5 +1,6 @@
 import 'package:arsenic_flutter_ecommerce/controller/home/bloc.dart';
 import 'package:arsenic_flutter_ecommerce/main.dart';
+import 'package:arsenic_flutter_ecommerce/presentation/home/detail_screen/detail_screen.dart';
 import 'package:arsenic_flutter_ecommerce/presentation/home/home_screen/components/catagories_list_view.dart';
 import 'package:arsenic_flutter_ecommerce/presentation/home/home_screen/components/horizontal_list_filter.dart';
 import 'package:arsenic_flutter_ecommerce/shared/constants.dart';
@@ -134,82 +135,94 @@ class _BodyState extends State<Body> {
                                         itemBuilder: (_, index) {
                                           return Padding(
                                             padding: const EdgeInsets.all(8.0),
-                                            child: Container(
-                                              height: 120,
-                                              width: size.width,
-                                              decoration: BoxDecoration(
-                                                  color: kPrimaryLightColor,
-                                                  borderRadius:
-                                                      BorderRadius.all(
-                                                          Radius.circular(20))),
-                                              child: Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            8.0),
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
+                                            child: GestureDetector(
+                                              onTap: () {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            DetailScreen(
+                                                              uid: widget.uid,
+                                                            )));
+                                              },
+                                              child: Container(
+                                                height: 120,
+                                                width: size.width,
+                                                decoration: BoxDecoration(
+                                                    color: kPrimaryLightColor,
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                20))),
+                                                child: Row(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
                                                               8.0),
-                                                      child: Image(
-                                                          height: 100,
-                                                          width: 100,
-                                                          fit: BoxFit.fill,
-                                                          image: NetworkImage(
-                                                              "https://i.insider.com/5e38419b5bc79c4c7d4e1192?width=906&format=jpeg")),
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                        child: Image(
+                                                            height: 100,
+                                                            width: 100,
+                                                            fit: BoxFit.fill,
+                                                            image: NetworkImage(
+                                                                "https://i.insider.com/5e38419b5bc79c4c7d4e1192?width=906&format=jpeg")),
+                                                      ),
                                                     ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            8.0),
-                                                    child: Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceEvenly,
-                                                      children: [
-                                                        Text(
-                                                          state
-                                                              .listStoreItems[
-                                                                  index]
-                                                              .itemName,
-                                                          style: TextStyle(
-                                                              color:
-                                                                  Colors.black,
-                                                              fontSize: 18),
-                                                        ),
-                                                        Text(
-                                                          state
-                                                              .listStoreItems[
-                                                                  index]
-                                                              .itemName,
-                                                          style: TextStyle(
-                                                              color:
-                                                                  Colors.black,
-                                                              fontSize: 16),
-                                                        ),
-                                                        Text(
-                                                          "AED " +
-                                                              state
-                                                                  .listStoreItems[
-                                                                      index]
-                                                                  .itemPrice
-                                                                  .toString(),
-                                                          style: TextStyle(
-                                                              color:
-                                                                  Colors.black,
-                                                              fontSize: 20),
-                                                        )
-                                                      ],
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceEvenly,
+                                                        children: [
+                                                          Text(
+                                                            state
+                                                                .listStoreItems[
+                                                                    index]
+                                                                .itemName,
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .black,
+                                                                fontSize: 18),
+                                                          ),
+                                                          Text(
+                                                            state
+                                                                .listStoreItems[
+                                                                    index]
+                                                                .itemName,
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .black,
+                                                                fontSize: 16),
+                                                          ),
+                                                          Text(
+                                                            "AED " +
+                                                                state
+                                                                    .listStoreItems[
+                                                                        index]
+                                                                    .itemPrice
+                                                                    .toString(),
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .black,
+                                                                fontSize: 20),
+                                                          )
+                                                        ],
+                                                      ),
                                                     ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           );
